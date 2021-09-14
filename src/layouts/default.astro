@@ -1,0 +1,59 @@
+---
+import Header from "../components/common/Header.astro"
+
+const SITE = {
+  title: 'TailwindLabs',
+  description: 'Creators of Tailwind CSS, Tailwind UI, HeadlessUI, Heroicons and Refactoring UI,',
+};
+
+const OPEN_GRAPH = {
+  image: {
+    src: '/assets/tailwindlabs.jpg?v=1',
+    alt: 'Tailwindcss Logo',
+  },
+  twitter: 'tailwindlabs',
+};
+
+const { 
+        content = {},
+        canonicalURL,
+} = Astro.props;
+
+const imageSrc = content?.image?.src ?? OPEN_GRAPH.image.src;
+const canonicalImageSrc = new URL(imageSrc, Astro.site);
+const imageAlt = content?.image?.alt ?? OPEN_GRAPH.image.alt;
+
+---
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
+  <link rel="alternate icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="sitemap" href="/sitemap.xml">
+  <link rel="canonical" href={canonicalURL}>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" type="text/css" href={Astro.resolve("../styles/global.css")}>
+  <meta property="og:title" content={content.title ?? SITE.title} >
+  <meta property="og:type" content="article">
+  <meta property="og:url" content={canonicalURL}>
+  <meta property="og:locale" content={content.ogLocale ?? OPEN_GRAPH.locale}>
+  <meta property="og:image" content={canonicalImageSrc}>
+  <meta property="og:image:alt" content={imageAlt}>
+  <meta property="og:description" content={content.description ? content.description : SITE.description}>
+  <meta property="og:site_name" content={SITE.title}>
+  <meta name="twitter:creator" content="@XSukhpreet">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content={OPEN_GRAPH.twitter}>
+  <meta name="twitter:title" content={content.title ?? SITE.title}>
+  <meta name="twitter:description" content={content.description ? content.description : SITE.description}>
+  <meta name="twitter:image" content={canonicalImageSrc}>
+  <meta name="twitter:image:alt" content={imageAlt}>
+  <title>{content.title ?? SITE.title}</title>
+</head>
+<body class="relative bg-blueGray-900">
+  <Header/>
+  <slot/>
+</body>
+</html>

@@ -1,0 +1,7 @@
+---
+const {link="#",title="Tailwindcss",paragraph="A utility-first CSS framework packed with classes like flex, pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup.",clx="", boxShadow=""} = Astro.props
+---
+<a target="_blank" href={link} class={"px-6 block py-4 mb-4 rounded-xl "+clx} style={`box-shadow:0px 0px 16px 0px hsla(${boxShadow}deg, 89%, 13% ,0.1), 0px 0px 8px 0px hsla(${boxShadow}deg, 100%, 50% ,0.1)`}>
+  <h1 class="text-white text-3xl font-round mb-2" style="text-shadow:1px 2px 4px #00000044;">{title}</h1>
+  <p class="text-white font-round text-opacity-90" style="text-shadow:0px 0px 2px #00000022;">{paragraph}</p>
+</a>

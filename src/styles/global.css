@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.PEER:hover ~ .PEER-hover\:opacity-100 {
+  opacity: 1;
+}
